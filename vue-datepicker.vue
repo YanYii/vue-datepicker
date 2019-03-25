@@ -635,6 +635,11 @@ exports.default = {
       }
     },
     checkDay: function checkDay(obj) {
+      // disable click when action is previous or next to fix when setting limit from, old day, whick action is previous, still clickable.
+      if (obj.action === 'previous' || obj.action === 'next') {
+        return false
+      }
+      
       if (obj.unavailable || obj.value === '') {
         return false;
       }
